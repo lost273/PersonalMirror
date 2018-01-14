@@ -1,4 +1,6 @@
-﻿var array = [99, -10, 100123, 18, -978, 5623, 463, -9, 287, 49];
+﻿var intArray = [99, -10, 100123, 18, -978, 5623, 463, -9, 287, 49];
+var charArray = ['b', 'a', 't', 'g', 'e', 'm', 'r', 'q', 'c'];
+var floatArray = [30.5, 10.02, 56.17, -1.01, 7.66, 5.17, 1000.33, -500.9];
 
 var sort = function(a){
     
@@ -12,8 +14,11 @@ var sort = function(a){
             }
         }
     }
+    for (var index in a) {
+        document.write(a[index] + "</br>");
+    }
 }
-sort(array);
-for (var index in array) {
-    document.write(array[index] + "</br>");
-}
+
+sort(intArray);
+sort(charArray);
+sort(floatArray);
