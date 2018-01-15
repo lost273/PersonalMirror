@@ -1,14 +1,14 @@
 ﻿@{int[] array = { 99, -10, 100123, 18, -978, 5623, 463, -9, 287, 49 }; }
-
-@foreach (int i in array) {
-    <div class=".container-fluid">
-        <div class="row">
+<div class="container-fluid">
+    <div class="row">
+        @foreach (int i in array) {
             <div class="col-md-1">
                 <div class="well">@i</div>
             </div>
-        </div>
+        }
     </div>
-}
+</div>
+    
 
 
         @*@section Scripts {
