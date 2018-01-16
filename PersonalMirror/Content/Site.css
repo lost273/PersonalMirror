@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#square {
+    width: 100px;
+    height: 100px;
+    background: #50c878;
+    border: 3px solid silver;
+}
+#square-empty {
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    border: 3px solid silver;
+}
