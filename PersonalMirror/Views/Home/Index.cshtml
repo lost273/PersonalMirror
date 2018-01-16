@@ -1,4 +1,5 @@
-﻿@{int[] array = { 99, -10, 100123, 18, -978, 5623, 463, -9, 287, 49 }; }
+﻿@{int[] array = { 99, -10, 100123, 18, -978, 5623, 463, -9, 287, 49 };
+    }
 <div class="container-fluid">
     <div class="row">
         @foreach (int i in array) {
@@ -8,10 +9,20 @@
         }
     </div>
 </div>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+        @for (int i = 0; i < array.Length; i++) {
+            <div class="col-md-1">
+                <div id="@i" class="well"></div>
+         </div>
+        }
+    </div>
+</div>
     
 
 
-        @*@section Scripts {
-                @Scripts.Render("~/scripts/myscript.js")
-            }*@
+@section Scripts {
+    @Scripts.Render("~/scripts/myscript.js")
+}
 
