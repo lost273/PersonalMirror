@@ -14,11 +14,9 @@ var sort = function(a){
             }
         }
     }
-    for (var index in a) {
-        document.write(a[index] + "</br>");
+    for (var i = 0; i < a.length; i++) {
+        document.getElementById(i).innerHTML = a[i];
     }
 }
 
 sort(intArray);
-sort(charArray);
-sort(floatArray);
