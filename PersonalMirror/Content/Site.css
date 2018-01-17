@@ -28,6 +28,7 @@ textarea {
     height: 100px;
     background: #50c878;
     border: 3px solid silver;
+    font: 16px;
 }
 #square-empty {
     width: 100px;
