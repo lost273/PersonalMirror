@@ -5,14 +5,8 @@
     event.target.id = "square1";
 }
 //document.getElementById("square-empty").addEventListener("click", move);
-//var elements = document.querySelectorAll("#field.row div");
-//for (var el in elements) {
-//    el.id = "aa";
-//    console.log(el.innerText);
-//    //el.addEventListener("click", move);
-//}
-var elems = document.querySelectorAll("#field.row div");
-
-for (var i = 0; i < elems.length; i++) {
-    console.log("Текст селектора " + i + ": " + elems[i].innerText);
+var elements = document.querySelectorAll("#field.row div");
+for (var index in elements) {
+    console.log(elements[index].innerText);
+    elements[index].addEventListener("click", move);
 }
