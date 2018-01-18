@@ -14,8 +14,10 @@
     }
     console.log(indexCurrent);
     console.log(indexZero);
-    if (((indexCurrent - 3) == indexZero) || ((indexCurrent + 3) == indexZero) ||
-        ((indexCurrent - 1) == indexZero) || ((indexCurrent + 1) == indexZero)) {
+    if (((indexCurrent - 3) == indexZero) ||
+        ((indexCurrent + 3) == indexZero) ||
+        ((indexCurrent - 1) == indexZero) ||
+        ((indexCurrent + 1) == indexZero)) {
         elements[indexCurrent].id = "square-empty";
         elements[indexZero].id = "square";
     }
