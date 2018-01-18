@@ -1,23 +1,23 @@
 ﻿function move(event) {
-    if (event.target.id == "square-empty") {
+    if (event.target.id === "square-empty") {
         return;
     }
     var elements = document.querySelectorAll("#field.row div");
     var indexZero, indexCurrent;
     for (var index in elements) {
-        if (elements[index].innerText == "") {
+        if (elements[index].innerText === "") {
             indexZero = index;
         }
-        if (elements[index].innerText == event.target.innerText) {
+        if (elements[index].innerText === event.target.innerText) {
             indexCurrent = index;
         }
     }
     console.log(indexCurrent);
     console.log(indexZero);
-    if (((indexCurrent - 3) == indexZero) ||
-        ((indexCurrent + 3) == indexZero) ||
-        ((indexCurrent - 1) == indexZero) ||
-        ((indexCurrent + 1) == indexZero)) {
+    if (indexCurrent - 3 == indexZero ||
+        indexCurrent + 3 == indexZero ||
+        indexCurrent - 1 == indexZero ||
+        indexCurrent + 1 == indexZero) {
         elements[indexCurrent].id = "square-empty";
         elements[indexZero].id = "square";
         elements[indexZero].innerText = elements[indexCurrent].innerText;
