@@ -20,6 +20,8 @@
         ((indexCurrent + 1) == indexZero)) {
         elements[indexCurrent].id = "square-empty";
         elements[indexZero].id = "square";
+        elements[indexZero].innerText = elements[indexCurrent].innerText;
+        elements[indexCurrent].innerText = "";
     }
 }
 //document.getElementById("square-empty").addEventListener("click", move);
