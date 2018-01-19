@@ -13,12 +13,12 @@
         }
     }
    
-    console.log("Cur " + typeof (indexCurrent) + indexCurrent);
-    console.log("Zer " + typeof (indexZero) + indexZero);
-    if (indexCurrent - 3 == indexZero ||
-        indexCurrent + 3 == indexZero ||
-        indexCurrent - 1 == indexZero ||
-        indexCurrent + 1 == indexZero) {
+    console.log("Cur " + typeof indexCurrent + indexCurrent);
+    console.log("Zer " + typeof indexZero + indexZero);
+    if (indexCurrent - 3 === indexZero ||
+        indexCurrent + 3 === indexZero ||
+        indexCurrent - 1 === indexZero ||
+        indexCurrent + 1 === indexZero) {
         elements[indexCurrent].id = "square-empty";
         elements[indexZero].id = "square";
         elements[indexZero].innerText = elements[indexCurrent].innerText;
@@ -27,7 +27,7 @@
 }
 //document.getElementById("square-empty").addEventListener("click", move);
 var el = document.querySelectorAll("#field.row div");
-for (var index in el) {
+for (var index = 0; index < el.length; index++) {
     console.log(el[index].innerText);
     el[index].addEventListener("click", move);
 }

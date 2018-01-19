@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font: 14px/24px "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -28,7 +29,7 @@ textarea {
     height: 100px;
     background: #50c878;
     border: 3px solid silver;
-    font: 16px;
+    font-size: 40px;
 }
 #square-empty {
     width: 100px;
