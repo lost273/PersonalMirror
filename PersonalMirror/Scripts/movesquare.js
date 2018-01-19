@@ -4,7 +4,7 @@
     }
     var elements = document.querySelectorAll("#field.row div");
     var indexZero, indexCurrent;
-    for (var index in elements) {
+    for (var index = 0; index < elements.length; index++) {
         if (elements[index].innerText === "") {
             indexZero = index;
         }
@@ -12,8 +12,9 @@
             indexCurrent = index;
         }
     }
-    console.log(indexCurrent);
-    console.log(indexZero);
+   
+    console.log("Cur " + typeof (indexCurrent) + indexCurrent);
+    console.log("Zer " + typeof (indexZero) + indexZero);
     if (indexCurrent - 3 == indexZero ||
         indexCurrent + 3 == indexZero ||
         indexCurrent - 1 == indexZero ||
