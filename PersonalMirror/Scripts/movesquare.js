@@ -17,8 +17,8 @@
     console.log("Zer " + typeof indexZero + indexZero);
     if (indexCurrent - 3 === indexZero ||
         indexCurrent + 3 === indexZero ||
-        indexCurrent - 1 === indexZero ||
-        indexCurrent + 1 === indexZero) {
+        indexCurrent - 1 === indexZero && indexCurrent !== 3 && indexCurrent !== 6 ||
+        indexCurrent + 1 === indexZero && indexCurrent !== 2 && indexCurrent !== 5) {
         elements[indexCurrent].id = "square-empty";
         elements[indexZero].id = "square";
         elements[indexZero].innerText = elements[indexCurrent].innerText;
