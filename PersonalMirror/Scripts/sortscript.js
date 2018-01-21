@@ -5,25 +5,31 @@ var floatArray = [30.5, 10.02, 56.17, -1.01, 7.66, 5.17, 1000.33, -500.9];
 function display() {
     var i = +document.getElementById("i").innerHTML;
     var j = +document.getElementById("j").innerHTML;
-    if (j === 0) {
-        j = a.length - 1
+    var attribute = document.getElementById("attribute").innerHTML;
+    if (j === -1) {
+        j = a.length - 1;
     }
+    if (i >= a.length || j <= 0) return;
+
     document.getElementById(i).style.background = "#FF0000";
     document.getElementById(j).style.background = "#32CD32";
+    if (a[j - 1] > a[j]) {
+        var temp;
+        temp = a[j - 1];
+        a[j - 1] = a[j];
+        a[j] = temp;
+    }
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
     }
-    for (; i < a.length; i++) {
-        for (; j > 0; j--) {
-            if (a[j - 1] > a[j]) {
-                var temp;
-                temp = a[j - 1];
-                a[j - 1] = a[j];
-                a[j] = temp;
-            }
-        }
-    }
+    if (attribute === "true") { j++; }
+    else { j = 0; }
+    document.getElementById("i").innerHTML = i;
+    document.getElementById("j").innerHTML = j;
+    document.getElementById("attribute").innerHTML = attribute;
 }
 
 document.getElementById("nextiteration").addEventListener("click", display);
-
+for (var k = 0; k < a.length; k++) {
+    document.getElementById(k).innerHTML = a[k];
+}
