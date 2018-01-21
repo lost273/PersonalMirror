@@ -2,22 +2,28 @@
 var charArray = ['b', 'a', 't', 'g', 'e', 'm', 'r', 'q', 'c'];
 var floatArray = [30.5, 10.02, 56.17, -1.01, 7.66, 5.17, 1000.33, -500.9];
 
-var display = function (a, one) {
-    document.getElementById(one).style.background = "#FF0000";
+function display() {
+    var i = +document.getElementById("i").innerHTML;
+    var j = +document.getElementById("j").innerHTML;
+    if (j === 0) {
+        j = a.length - 1
+    }
+    document.getElementById(i).style.background = "#FF0000";
+    document.getElementById(j).style.background = "#32CD32";
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
     }
-}
-
-display(a,1);
-
-for (var i = 0; i < a.length; i++) {
-    for (var j = a.length - 1; j > 0; j--) {
-        if (a[j - 1] > a[j]) {
-            var temp;
-            temp = a[j - 1];
-            a[j - 1] = a[j];
-            a[j] = temp;
+    for (; i < a.length; i++) {
+        for (; j > 0; j--) {
+            if (a[j - 1] > a[j]) {
+                var temp;
+                temp = a[j - 1];
+                a[j - 1] = a[j];
+                a[j] = temp;
+            }
         }
     }
 }
+
+document.getElementById("nextiteration").addEventListener("click", display);
+
