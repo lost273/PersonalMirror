@@ -7,12 +7,19 @@ using System.Web.Mvc;
 namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
+
+            return View();
+        }
+        public ActionResult SortInsert() {
+            
+            return View();
+        }
+        public ActionResult SortBubble() {
             
             return View();
         }
 
         public ActionResult Fifteens() {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }

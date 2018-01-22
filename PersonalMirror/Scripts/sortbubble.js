@@ -9,6 +9,7 @@ function display() {
 
     //begin of the outer iteration
     if (j === 0) {
+        document.getElementById(j).style.background = "#f5f5f5";
         j = a.length - 1;
         i++;
     }
