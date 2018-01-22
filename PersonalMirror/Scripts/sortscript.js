@@ -8,15 +8,14 @@ function display() {
  
 
     //begin of the outer iteration
-    if (j === -1) {
+    if (j === 0) {
         j = a.length - 1;
         i++;
     }
     if (i >= a.length) return;
     
-    document.getElementById(i).style.background = "#FF0000";
-    document.getElementById(j).style.background = "#32CD32";
-
+    document.getElementById(j - 1).style.background = "#32CD32";
+    document.getElementById(j).style.background = "#f5f5f5";
     if (a[j - 1] > a[j]) {
         var temp;
         temp = a[j - 1];
