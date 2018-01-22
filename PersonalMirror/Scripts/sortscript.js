@@ -6,11 +6,13 @@ function display() {
     var i = +document.getElementById("i").innerHTML;
     var j = +document.getElementById("j").innerHTML;
     var attribute = document.getElementById("attribute").innerHTML;
+
+    //begin of the outer iteration
     if (j === -1) {
         j = a.length - 1;
     }
-    if (i >= a.length || j <= 0) return;
-
+    if (i >= a.length) return;
+    
     document.getElementById(i).style.background = "#FF0000";
     document.getElementById(j).style.background = "#32CD32";
     if (a[j - 1] > a[j]) {
