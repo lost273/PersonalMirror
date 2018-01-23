@@ -5,23 +5,22 @@ var floatArray = [30.5, 10.02, 56.17, -1.01, 7.66, 5.17, 1000.33, -500.9];
 function display() {
     var i = +document.getElementById("i").innerHTML;
     var j = +document.getElementById("j").innerHTML;
-
+    var temp = +document.getElementById("t").innerHTML;;
 
     //begin of the outer iteration
-    if (j === 0) {
+    if (j === -1) {
         document.getElementById(j).style.background = "#f5f5f5";
-        j = a.length - 1;
         i++;
+        if (i >= a.length) return;
+        temp = a[i];
+        j = i - 1;
+        
     }
-    if (i >= a.length) return;
 
     document.getElementById(j - 1).style.background = "#32CD32";
     document.getElementById(j).style.background = "#f5f5f5";
-    if (a[j - 1] > a[j]) {
-        var temp;
-        temp = a[j - 1];
+    if (j >= 0 && a[j] > temp) {
         a[j - 1] = a[j];
-        a[j] = temp;
     }
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
