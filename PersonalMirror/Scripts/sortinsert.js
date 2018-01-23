@@ -21,15 +21,14 @@ function display() {
     document.getElementById(j).style.background = "#f5f5f5";
     if (j >= 0 && a[j] > temp) {
         a[j + 1] = a[j];
+        j--;
     } else {
         a[j + 1] = temp;
     }
-    j--;
-    if()
+    
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
     }
-    j--;
 
     document.getElementById("i").innerHTML = i;
     document.getElementById("j").innerHTML = j;
