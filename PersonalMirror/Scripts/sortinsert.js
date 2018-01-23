@@ -12,18 +12,16 @@ function display() {
         i++;
         if (i >= a.length) return;
         temp = a[i];
-        j = i - 1;
-        document.getElementById(j).style.background = "#f5f5f5";
-        
+        j = i - 1;        
     }
 
-    //document.getElementById(j + 1).style.background = "#32CD32";
-    //document.getElementById(j).style.background = "#f5f5f5";
     if (j >= 0 && a[j] > temp) {
         a[j + 1] = a[j];
+        document.getElementById(j).style.background = "#32CD32";
         j--;
     } else {
         a[j + 1] = temp;
+        document.getElementById(j + 1).style.background = "#f5f5f5";
         j = -2;
     }
     
