@@ -7,7 +7,7 @@ function display() {
     var j = +document.getElementById("j").innerHTML;
     var temp = +document.getElementById("t").innerHTML;
 
-    //begin of the outer iteration
+    //begin of the new outer iteration
     if (j === -2) {
         i++;
         if (i >= a.length) return;
@@ -17,11 +17,13 @@ function display() {
 
     if (j >= 0 && a[j] > temp) {
         a[j + 1] = a[j];
+        document.getElementById(j + 1).style.background = "#f5f5f5";
         document.getElementById(j).style.background = "#32CD32";
         j--;
     } else {
         a[j + 1] = temp;
         document.getElementById(j + 1).style.background = "#f5f5f5";
+        // -2 indicates the end of outer iteration
         j = -2;
     }
     
