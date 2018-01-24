@@ -5,6 +5,7 @@ var floatArray = [30.5, 10.02, 56.17, -1.01, 7.66, 5.17, 1000.33, -500.9];
 function display() {
     var i = +document.getElementById("i").innerHTML;
     var j = +document.getElementById("j").innerHTML;
+    var tempIndex = +document.getElementById("ti").innerHTML;
     var temp = +document.getElementById("t").innerHTML;
 
     //begin of the new outer iteration
