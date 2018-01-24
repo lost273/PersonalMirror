@@ -9,21 +9,23 @@ function display() {
     var temp = +document.getElementById("t").innerHTML;
 
     //begin of the new outer iteration
-    if (j === -2) {
+    if (j >= a.length) {
+        j = i + 1;
         i++;
         if (i >= a.length) return;
         temp = a[i];
-        j = i - 1;
+        tempIndex = i;
     }
 
-    if (j >= 0 && a[j] > temp) {
-        a[j + 1] = a[j];
-        document.getElementById(j + 1).style.background = "#f5f5f5";
-        document.getElementById(j).style.background = "#32CD32";
-        j--;
+    if (a[j] < temp) {
+        tempIndex = j;
+        temp = a[j];
+        //document.getElementById(j + 1).style.background = "#f5f5f5";
+        //document.getElementById(j).style.background = "#32CD32";
+        
     } else {
         a[j + 1] = temp;
-        document.getElementById(j + 1).style.background = "#f5f5f5";
+        //document.getElementById(j + 1).style.background = "#f5f5f5";
         // -2 indicates the end of outer iteration
         j = -2;
     }
