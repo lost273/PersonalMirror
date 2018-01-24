@@ -21,8 +21,7 @@ function display() {
         tempIndex = j;
         temp = a[j];
         //document.getElementById(j + 1).style.background = "#f5f5f5";
-        //document.getElementById(j).style.background = "#32CD32";
-        
+        //document.getElementById(j).style.background = "#32CD32";   
     } else {
         a[j + 1] = temp;
         //document.getElementById(j + 1).style.background = "#f5f5f5";
@@ -37,6 +36,7 @@ function display() {
     document.getElementById("i").innerHTML = i;
     document.getElementById("j").innerHTML = j;
     document.getElementById("t").innerHTML = temp;
+    document.getElementById("ti").innerHTML = tempIndex;
 }
 
 document.getElementById("nextiteration").addEventListener("click", display);
