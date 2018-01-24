@@ -1,0 +1,32 @@
+﻿@{int[] array = { 99, -10, 10012, 18, -978, 5623, 463, -9, 287, 49 };
+}
+<h2>Current array:</h2>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (int i in array) {
+            <div class="col-md-1">
+                <div class="well">@i</div>
+            </div>
+        }
+    </div>
+</div>
+<br />
+<h2>Select Algorithm</h2>
+<h3>First iteration</h3><p id="i">0</p>
+<h3>Second iteration</h3><p id="j">-2</p>
+<h3>Temp element</h3><p id="t">0</p>
+<div class="container-fluid">
+    <div class="row">
+        @for (int i = 0; i < array.Length; i++) {
+            <div class="col-md-1">
+                <div id="@i" class="well"></div>
+            </div>
+        }
+    </div>
+</div>
+
+<button type="button" class="btn btn-warning" id="nextiteration">Next iteration</button>
+
+@section Scripts {
+    @Scripts.Render("~/scripts/sortselect.js")
+}

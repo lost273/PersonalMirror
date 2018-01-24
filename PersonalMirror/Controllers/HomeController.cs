@@ -10,6 +10,11 @@ namespace PersonalMirror.Controllers {
 
             return View();
         }
+        public ActionResult SortSelect() {
+
+            return View();
+        }
+
         public ActionResult SortInsert() {
             
             return View();
