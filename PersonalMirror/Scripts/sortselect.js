@@ -9,12 +9,14 @@ function display() {
     var temp = +document.getElementById("t").innerHTML;
 
     //begin of the new outer iteration
-    if (j >= a.length) {
-        j = i + 1;
-        i++;
+    if (j >= a.length || i === 0) {
         if (i >= a.length) return;
-        temp = a[i];
+        if (i != 0) {
+            i++;
+        }
         tempIndex = i;
+        temp = a[i];
+        j = i + 1;
     }
 
     if (a[j] < temp) {
@@ -22,12 +24,9 @@ function display() {
         temp = a[j];
         //document.getElementById(j + 1).style.background = "#f5f5f5";
         //document.getElementById(j).style.background = "#32CD32";   
-    } else {
-        a[j + 1] = temp;
-        //document.getElementById(j + 1).style.background = "#f5f5f5";
-        // -2 indicates the end of outer iteration
-        j = -2;
     }
+
+    j++;
 
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
