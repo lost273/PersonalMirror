@@ -11,7 +11,7 @@ function display() {
     //begin of the new outer iteration
     if (j >= a.length || i === 0) {
         if (i >= a.length) return;
-        if (i != 0) {
+        if (i !== 0) {
             i++;
         }
         tempIndex = i;
