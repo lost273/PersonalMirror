@@ -9,11 +9,9 @@ function display() {
     var temp = +document.getElementById("t").innerHTML;
 
     //begin of the new outer iteration
-    if (j >= a.length || i === 0) {
+    if (j >= a.length || i === -1) {
         if (i >= a.length) return;
-        if (i !== 0) {
-            i++;
-        }
+        i++;
         tempIndex = i;
         temp = a[i];
         j = i + 1;
