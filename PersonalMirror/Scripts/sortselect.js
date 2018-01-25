@@ -24,11 +24,11 @@ function display() {
     if (a[j] < temp) {
         tempIndex = j;
         temp = a[j];
-        //document.getElementById(j + 1).style.background = "#f5f5f5";
-        //document.getElementById(j).style.background = "#32CD32";   
     }
-
+    
+    if (j < a.length) document.getElementById(j).style.background = "#f5f5f5";   
     j++;
+    if (j < a.length) document.getElementById(j).style.background = "#32CD32";
 
     for (var k = 0; k < a.length; k++) {
         document.getElementById(k).innerHTML = a[k];
