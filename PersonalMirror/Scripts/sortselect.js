@@ -11,6 +11,10 @@ function display() {
     //begin of the new outer iteration
     if (j >= a.length || i === -1) {
         if (i >= a.length) return;
+        if (i !== -1) {
+            a[tempIndex] = a[i];
+            a[i] = temp;
+        }
         i++;
         tempIndex = i;
         temp = a[i];
