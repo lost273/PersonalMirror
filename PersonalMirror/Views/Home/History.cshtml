@@ -1,10 +1,5 @@
-﻿@using AjaxChat.Models
+﻿@using PersonalMirror.Models
 @model ChatModel
-<div id="Users">
-    @foreach (ChatUser user in Model.Users) {
-        <p>@user.Name</p>
-    }
-</div>
 <div id="Messages">
     @foreach (ChatMessage msg in Model.Messages) {
         <p>

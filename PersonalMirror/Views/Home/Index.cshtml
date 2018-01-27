@@ -1,21 +1,20 @@
-﻿<body onload="javascript:WebSocketSupport()">
-    <div id="ws_support"></div>
+﻿<div id="Username">
 
-    <div id="wrapper">
-        <div id="menu">
-            <h3 class="welcome">Welcome to WebSocket PHP Open Group Chat App v1</h3>
-        </div>
+</div>
+<div id="LastRefresh">
 
-        <div id="chatbox"></div>
+</div>
+<div id="container">
 
-        <div id="controls">
-            <label for="name"><b>Name</b></label>
-            <input name="chatname" type="text" id="chatname" size="67" placeholder="Type your name here" />
-            <input name="msg" type="text" id="msg" size="63" placeholder="Type your message here" />
-            <input name="sendmsg" type="submit" id="sendmsg" value="Send" onclick="doSend(document.getElementById('msg').value)" />
-        </div>
-    </div>
-</body>
+</div>
+<div id="Error">
+
+</div>
+@Ajax.ActionLink("Login", "Index", new { user = "" },
+        new AjaxOptions { UpdateTargetId = "container", OnFailure = "LoginOnFailure", OnSuccess = "LoginOnSuccess" },
+        new { @id = "LoginButton", @style = "visibility:hidden;" })
+
+
 @section Scripts {
     @Scripts.Render("~/Scripts/chat.js")
     @Scripts.Render("~/bundles/jquery")
