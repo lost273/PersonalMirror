@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonalMirror.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,12 @@ using System.Web.Mvc;
 
 namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
-        public ActionResult Index() {
-
-            return View();
-        }
-        public ActionResult SortSelect(string chatMessage) {
-
+        static ChatModel chatModel;
+        public ActionResult Index(string chatMessage) {
             return PartialView("History", chatMessage);
+        }
+        public ActionResult SortSelect() {
+            return View();
         }
 
         public ActionResult SortInsert() {

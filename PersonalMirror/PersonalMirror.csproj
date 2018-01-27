@@ -197,6 +197,7 @@
     <Content Include="Views\Home\SortInsert.cshtml" />
     <Content Include="Views\Home\SortSelect.cshtml" />
     <Content Include="Views\Home\ChatRoom.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

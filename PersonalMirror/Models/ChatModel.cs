@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace PersonalMirror.Models {
     public class ChatModel {
-        public List<ChatUser> Users;  // Все пользователи чата
 
-        public List<ChatMessage> Messages; // все сообщения
+        public List<ChatMessage> Messages;
 
         public ChatModel() {
-            Users = new List<ChatUser>();
             Messages = new List<ChatMessage>();
 
             Messages.Add(new ChatMessage() {
-                Text = "Чат запущен " + DateTime.Now
+                Text = "Chat ON " + DateTime.Now
             });
         }
     }
@@ -25,11 +21,9 @@ namespace PersonalMirror.Models {
     }
 
     public class ChatMessage {
-        // автор сообщения, если null - автор сервер
+        // null - server
         public ChatUser User;
-        // время сообщения
         public DateTime Date = DateTime.Now;
-        // текст сообщения
         public string Text = "";
     }
 }
