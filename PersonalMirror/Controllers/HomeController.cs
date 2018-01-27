@@ -10,9 +10,9 @@ namespace PersonalMirror.Controllers {
 
             return View();
         }
-        public ActionResult SortSelect() {
+        public ActionResult SortSelect(string chatMessage) {
 
-            return View();
+            return PartialView("History", chatMessage);
         }
 
         public ActionResult SortInsert() {
