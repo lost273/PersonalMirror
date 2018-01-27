@@ -14,15 +14,7 @@ namespace PersonalMirror.Models {
             });
         }
     }
-    public class ChatUser {
-        public string Name;
-        public DateTime LoginTime;
-        public DateTime LastPing;
-    }
-
     public class ChatMessage {
-        // null - server
-        public ChatUser User;
         public DateTime Date = DateTime.Now;
         public string Text = "";
     }

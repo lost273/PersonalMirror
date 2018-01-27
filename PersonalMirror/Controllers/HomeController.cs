@@ -9,7 +9,7 @@ namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
         static ChatModel chatModel;
         public ActionResult Index(string chatMessage) {
-            return PartialView("History", chatMessage);
+            return PartialView("History", chatModel);
         }
         public ActionResult SortSelect() {
             return View();
