@@ -37,3 +37,37 @@ textarea {
     background: #ffffff;
     border: 3px solid silver;
 }
+#container {
+    height: 80%;
+    width: 85%;
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    min-width: 320px;
+    background-color: #aaa;
+    border: 1px solid #ccc;
+}
+
+#Messages {
+    position: absolute;
+    width: 72%;
+    left: 27%;
+    height: 80%;
+    top: 1%;
+    background-color: #ddd;
+    text-align: left;
+    font-size: x-small;
+    overflow-y: scroll;
+}
+#inputForm {
+    position: absolute;
+    width: 72%;
+    left: 27%;
+    height: 12%;
+    top: 82%;
+    min-height: 60px;
+    background: #eee;
+    border: 1px solid silver;
+    border-radius: 4px;
+    vertical-align: middle;
+}
