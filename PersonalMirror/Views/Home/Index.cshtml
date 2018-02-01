@@ -1,5 +1,10 @@
 ﻿@using PersonalMirror.Models
 @model ChatModel
+
+
+
+<input onkeypress="this.nextSibling.innerHTML = this.nextSibling.innerHTML + getChar(event)+''"><b></b>
+
 <div id="container">
     <div id="RefreshArea">
         @{
@@ -23,7 +28,8 @@ new { @id = "ActionLink", @style = "visibility:hidden;" })*@
 
 
     @section Scripts {
-        @Scripts.Render("~/Scripts/chat.js")
+        @*@Scripts.Render("~/Scripts/chat.js")*@
+        @Scripts.Render("~/Scripts/userkeypress.js")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     }
