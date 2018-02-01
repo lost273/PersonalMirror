@@ -38,18 +38,5 @@ namespace PersonalMirror.Controllers {
                 return Content(ex.Message);
             }
         }
-
-        public ActionResult SortSelect() {
-            return View();
-        }
-
-        public ActionResult SortInsert() {
-            
-            return View();
-        }
-        public ActionResult SortBubble() {
-            
-            return View();
-        }
     }
 }

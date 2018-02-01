@@ -5,7 +5,7 @@
 
     //sending messages on pressing Enter
     $('#txtMessage').keydown(function (e) {
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             e.preventDefault();
             $("#btnMessage").click();
         }
