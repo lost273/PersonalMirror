@@ -7,9 +7,10 @@
         }
     </div>
 </div>
-    @Ajax.ActionLink("ActionLink", "Index", new { user = "", logOn = "", logOff = "", chatMessage = "" },
+    @*@Ajax.ActionLink("ActionLink", "Index", new { user = "", logOn = "", logOff = "", chatMessage = "" },
 new AjaxOptions { UpdateTargetId = "RefreshArea", OnSuccess = "ChatOnSuccess", OnFailure = "ChatOnFailure" },
-new { @id = "ActionLink", @style = "visibility:hidden;" })
+new { @id = "ActionLink", @style = "visibility:hidden;" })*@
+<a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#RefreshArea" href="/" id="ActionLink" style="visibility:hidden;">ActionLink</a>
 
     <div id="inputForm">
         <table>
