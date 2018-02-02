@@ -6,15 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>SE</title>
+    <style>
+      #crt{
+        width: 400px;
+        height: 400px;
+        background: #000000;
+        border: 10px solid #778899;
+      }
+
+      #chat{
+        font-style: System; 
+        font-size: 24px; 
+        font-color: #32CD32;
+      }
+    </style>>
   </head>
 
   <body>
 
-    <div class="container" id="body-content">
-        <p id="chat" style="font-style: System"></p>
+    <div id="crt">
+        <div id="chat"></div>
     </div>
-    <!-- block for changing the scripts-->
-    <div id="scripts-block">
+
+
         <script>
             document.addEventListener("keypress", getChar, false);
             function getChar(event) {
@@ -29,7 +43,6 @@
               return null; // special char
             }
         </script>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
