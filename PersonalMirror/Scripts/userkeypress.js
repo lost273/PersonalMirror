@@ -21,9 +21,9 @@ function getChar(event) {
 function userSay() {
     var xhr = new XMLHttpRequest();
 
-    var body = document.getElementById("chat").innerHTML;
+    var body = document.getElementById("chat").innerHTML.toString();
 
-    xhr.open("POST", '', true);
+    xhr.open("POST", '/Home', true);
     xhr.setRequestHeader('Content-Type', 'text-plain');
 
     xhr.onreadystatechange = function () {

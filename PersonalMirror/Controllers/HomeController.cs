@@ -41,7 +41,7 @@ namespace PersonalMirror.Controllers {
             return View(chatModel);
         }
         [HttpPost]
-        public string Index(string chatMessage) {
+        public string Index(var chatMessage) {
             return "Hello!";
         }
     }
