@@ -3,18 +3,24 @@
 
 
 
-<input onkeypress="this.nextSibling.innerHTML = this.nextSibling.innerHTML + getChar(event)+''"><b></b>
+<div id="crt">
+    <div id="border-crt">
 
-<div id="container">
+        <div id="chat"><div class="blinking-cursor"> ></div></div>
+
+    </div>
+</div>
+
+@*<div id="container">
     <div id="RefreshArea">
         @{
             Html.RenderPartial("History", Model);
         }
     </div>
 </div>
-    @*@Ajax.ActionLink("ActionLink", "Index", new { user = "", logOn = "", logOff = "", chatMessage = "" },
+    @Ajax.ActionLink("ActionLink", "Index", new { user = "", logOn = "", logOff = "", chatMessage = "" },
 new AjaxOptions { UpdateTargetId = "RefreshArea", OnSuccess = "ChatOnSuccess", OnFailure = "ChatOnFailure" },
-new { @id = "ActionLink", @style = "visibility:hidden;" })*@
+new { @id = "ActionLink", @style = "visibility:hidden;" })
 <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#RefreshArea" href="/" id="ActionLink" style="visibility:hidden;">ActionLink</a>
 
     <div id="inputForm">
@@ -24,7 +30,7 @@ new { @id = "ActionLink", @style = "visibility:hidden;" })*@
                 <td><button id="btnMessage" value="Send">Send</button></td>
             </tr>
         </table>
-    </div>
+    </div>*@
 
 
     @section Scripts {

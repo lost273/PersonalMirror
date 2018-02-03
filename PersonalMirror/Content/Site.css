@@ -1,59 +1,105 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    font: 14px/24px "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #333333;
+}
+div {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #32CD32;
+    font: 16px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+#crt {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 600px;
+    background: #000000;
+    border: 10px solid #778899;
+}
+#border-crt {
+    overflow: hidden;
+    width: 760px;
+    height: 560px;
+    border: 1px solid #32CD32;
+}
+#chat {
+    font-weight: bold;
+    float: left;
+    margin-left: 0px;
+}
+.blinking-cursor {
+    margin-top: 0px;
+    margin-right: 0px;
+    font-weight: bold;
+    float: left;
+    color: #2E3D48;
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+    color: #32CD32;
+    }
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+
+    50% {
+        color: #32CD32;
+    }
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-#container {
-    height: 80%;
-    width: 85%;
-    position: absolute;
-    top: 12%;
-    left: 5%;
-    min-width: 320px;
-    background-color: #aaa;
-    border: 1px solid #ccc;
+@-webkit-keyframes
+
+"blink" {
+    from, to
+
+{
+    color: transparent;
 }
 
-#Messages {
-    position: absolute;
-    width: 72%;
-    left: 27%;
-    height: 80%;
-    top: 1%;
-    background-color: #ddd;
-    text-align: left;
-    font-size: x-small;
-    overflow-y: scroll;
+50% {
+    color: #32CD32;
 }
-#inputForm {
-    position: absolute;
-    width: 72%;
-    left: 27%;
-    height: 12%;
-    top: 82%;
-    min-height: 60px;
-    background: #eee;
-    border: 1px solid silver;
-    border-radius: 4px;
-    vertical-align: middle;
+
+}
+
+@-ms-keyframes
+
+"blink" {
+    from, to
+
+{
+    color: transparent;
+}
+
+50% {
+    color: #32CD32;
+}
+
+}
+
+@-o-keyframes
+
+"blink" {
+    from, to
+
+{
+    color: transparent;
+}
+
+50% {
+    color: #32CD32;
+}
 }
