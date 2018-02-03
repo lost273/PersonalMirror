@@ -19,8 +19,8 @@ div {
 }
 #border-crt {
     overflow: hidden;
-    width: 760px;
-    height: 560px;
+    width: 740px;
+    height: 540px;
     border: 1px solid #32CD32;
 }
 #chat {
@@ -41,7 +41,7 @@ div {
     animation: 1s blink step-end infinite;
 }
 
-@keyframes "blink" {
+@keyframes blink {
     from, to {
         color: transparent;
     }
@@ -54,52 +54,34 @@ div {
     from, to {
         color: transparent;
     }
-
     50% {
         color: #32CD32;
     }
 }
 
-@-webkit-keyframes
-
-"blink" {
-    from, to
-
-{
-    color: transparent;
-}
-
-50% {
+@-webkit-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
     color: #32CD32;
+    }
 }
 
-}
-
-@-ms-keyframes
-
-"blink" {
-    from, to
-
-{
+@-ms-keyframes blink {
+    from, to {
     color: transparent;
-}
-
-50% {
+    }
+    50% {
     color: #32CD32;
+    }
 }
 
-}
-
-@-o-keyframes
-
-"blink" {
-    from, to
-
-{
+@-o-keyframes blink {
+    from, to{
     color: transparent;
-}
-
-50% {
+    }
+    50% {
     color: #32CD32;
-}
+    }
 }
