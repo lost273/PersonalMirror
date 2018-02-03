@@ -23,8 +23,8 @@ function userSay() {
 
     var body = document.getElementById("chat").innerHTML.toString();
 
-    xhr.open("POST", '/Home', true);
-    xhr.setRequestHeader('Content-Type', 'text-plain');
+    xhr.open("POST", '', true);
+    xhr.setRequestHeader('source', 'XmlHttpRequest');//('Content-Type', 'application/json');//text-plain
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
