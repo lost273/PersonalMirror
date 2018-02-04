@@ -2,10 +2,6 @@
     background: #333333;
 }
 div {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     color: #32CD32;
     font: 16px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     font-weight: bold;
@@ -19,6 +15,14 @@ div {
     border: 10px solid #778899;
 }
 #border-crt {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     overflow: hidden;
     width: 740px;
     height: 540px;

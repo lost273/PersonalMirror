@@ -36,9 +36,15 @@ function userSay() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("history").innerHTML = "Stranger said: " +
-                document.getElementById("usermessage").innerHTML +
-                + "\n" + "Someone There said: " + xhr.responseText;
+            var d = new Date();
+            var minutes = d.getMinutes();
+            var hours = d.getHours();
+            var nowTime = "[" + hours + ":" + minutes + "]";
+            document.getElementById("userhistory").innerHTML = nowTime + " Stranger said: " +
+                document.getElementById("usermessage").innerHTML;
+            document.getElementById("serveranswer").innerHTML = "Someone There said: " +
+                xhr.responseText;
+            document.getElementById("usermessage").innerHTML = "";
         }
     };
 
