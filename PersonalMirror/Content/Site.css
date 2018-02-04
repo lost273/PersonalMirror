@@ -8,6 +8,7 @@ div {
     margin-bottom: 20px;
     color: #32CD32;
     font: 16px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-weight: bold;
 }
 #crt {
     margin-left: auto;
@@ -24,9 +25,11 @@ div {
     border: 1px solid #32CD32;
 }
 #chat {
-    font-weight: bold;
     float: left;
     margin-left: 0px;
+}
+div#usermessage {
+
 }
 .blinking-cursor {
     margin-top: 0px;
