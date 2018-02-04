@@ -21,10 +21,10 @@ function getChar(event) {
 function userSay() {
     var xhr = new XMLHttpRequest();
 
-    var body = document.getElementById("chat").innerHTML.toString();
+    var body = { 'message': document.getElementById("chat").innerHTML };
 
-    xhr.open("POST", '', true);
-    xhr.setRequestHeader('source', 'XmlHttpRequest');//('Content-Type', 'application/json');//text-plain
+    xhr.open("POST", '/Home/Index', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -32,5 +32,5 @@ function userSay() {
         }
     };
 
-    xhr.send(body);
+    xhr.send(JSON.stringify(body));
 }
