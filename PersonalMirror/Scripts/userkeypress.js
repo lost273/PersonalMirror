@@ -36,7 +36,9 @@ function userSay() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("usermessage").innerHTML += xhr.responseText;
+            document.getElementById("history").innerHTML = "Stranger said: " +
+                document.getElementById("usermessage").innerHTML +
+                + "\n" + "Someone There said: " + xhr.responseText;
         }
     };
 

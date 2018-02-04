@@ -42,7 +42,7 @@ namespace PersonalMirror.Controllers {
         }
         [HttpPost]
         public string Index(string message) {
-            return message;
+            return "servermessage";
         }
     }
 }
