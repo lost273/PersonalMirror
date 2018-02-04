@@ -1,4 +1,5 @@
 ﻿document.addEventListener("keypress", getChar, false);
+document.addEventListener("keydown", getControlKeys, false);
 function getChar(event) {
     if (event.which == null) { // IE
         if (event.keyCode === 13) { //enter
@@ -17,6 +18,13 @@ function getChar(event) {
         document.getElementById("usermessage").innerHTML += String.fromCharCode(event.which); // other
     }
     return null; // special char
+}
+function getControlKeys(event) {
+    const key = event.key; // const {key} = event; ES6+
+    if (key === "Backspace") {
+        document.getElementById("usermessage").innerHTML = document.getElementById("usermessage").innerHTML.slice(0, -1);
+        event.preventDefault(); //to prevent the default action (for example - "return back")
+    }
 }
 function userSay() {
     var xhr = new XMLHttpRequest();
