@@ -1,5 +1,8 @@
-﻿document.addEventListener("keypress", getChar, false);
-document.addEventListener("keydown", getControlKeys, false);
+﻿listenCarefully();
+function listenCarefully(){
+    document.addEventListener("keypress", getChar, false);
+    document.addEventListener("keydown", getControlKeys, false);
+}
 function getChar(event) {
     if (event.which == null) { // IE
         if (event.keyCode === 13) { //enter
@@ -41,6 +44,8 @@ function userSay() {
             document.getElementById("serveranswer").innerHTML = "";
             slowSay("Someone There said: " + xhr.responseText,0);
             document.getElementById("usermessage").innerHTML = "";
+            document.removeEventListener("keypress", getChar, false);
+            document.removeEventListener("keydown", getControlKeys, false);
         }
     };
 
@@ -51,4 +56,5 @@ function slowSay(text, index) {
         document.getElementById("serveranswer").innerHTML += text[index++];
         setTimeout(function () { slowSay(text, index); },100);
     }
+    listenCarefully();
 }
