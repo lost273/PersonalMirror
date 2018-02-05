@@ -36,17 +36,19 @@ function userSay() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var d = new Date();
-            var minutes = d.getMinutes();
-            var hours = d.getHours();
-            var nowTime = "[" + hours + ":" + minutes + "]";
-            document.getElementById("userhistory").innerHTML = nowTime + " Stranger said: " +
+            document.getElementById("userhistory").innerHTML = " Stranger said: " +
                 document.getElementById("usermessage").innerHTML;
-            document.getElementById("serveranswer").innerHTML = "Someone There said: " +
-                xhr.responseText;
+            document.getElementById("serveranswer").innerHTML = "";
+            slowSay("Someone There said: " + xhr.responseText,0);
             document.getElementById("usermessage").innerHTML = "";
         }
     };
 
     xhr.send(JSON.stringify(body));
+}
+function slowSay(text, index) {
+    if (index < text.length) {
+        document.getElementById("serveranswer").innerHTML += text[index++];
+        setTimeout(function () { slowSay(text, index); },100);
+    }
 }
