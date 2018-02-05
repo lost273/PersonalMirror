@@ -1,9 +1,4 @@
-﻿@using PersonalMirror.Models
-@model ChatModel
-
-
-
-<div id="crt">
+﻿<div id="crt">
     <div id="border-crt">
         <div id="userhistory"></div>
         <div id="serveranswer"></div>
@@ -12,30 +7,7 @@
     </div>
 </div>
 
-@*<div id="container">
-    <div id="RefreshArea">
-        @{
-            Html.RenderPartial("History", Model);
-        }
-    </div>
-</div>
-    @Ajax.ActionLink("ActionLink", "Index", new { user = "", logOn = "", logOff = "", chatMessage = "" },
-new AjaxOptions { UpdateTargetId = "RefreshArea", OnSuccess = "ChatOnSuccess", OnFailure = "ChatOnFailure" },
-new { @id = "ActionLink", @style = "visibility:hidden;" })
-<a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#RefreshArea" href="/" id="ActionLink" style="visibility:hidden;">ActionLink</a>
-
-    <div id="inputForm">
-        <table>
-            <tr>
-                <td rowspan="2"><textarea id="txtMessage" rows="3"></textarea></td>
-                <td><button id="btnMessage" value="Send">Send</button></td>
-            </tr>
-        </table>
-    </div>*@
-
-
     @section Scripts {
-        @*@Scripts.Render("~/Scripts/chat.js")*@
         @Scripts.Render("~/Scripts/userkeypress.js")
         @*@Scripts.Render("~/bundles/jquery")*@
         @*@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")*@
