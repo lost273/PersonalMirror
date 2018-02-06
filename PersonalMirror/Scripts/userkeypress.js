@@ -46,6 +46,7 @@ function userSay() {
             document.getElementById("usermessage").innerHTML = "";
             document.removeEventListener("keypress", getChar, false);
             document.removeEventListener("keydown", getControlKeys, false);
+            document.getElementsByClassName("blinking-cursor")[0].innerHTML = "";
         }
     };
 
@@ -58,5 +59,6 @@ function slowSay(text, index) {
     }
     else {
         listenCarefully();
+        document.getElementsByClassName("blinking-cursor")[0].innerHTML = ">";
     }
 }
