@@ -20,9 +20,15 @@ namespace PersonalMirror.Controllers {
         }
         [HttpPost]
         public string Index(string message) {
+            IdentifyNewWords(message);
+            IsCommand(message);
             return "servermessage";
         }
-        //identify this is conversation or command
+        //is this message contains the new words
+        public string[] IdentifyNewWords(string text) {
+            return new string[5];
+        }
+        //is this conversation or command
         public bool IsCommand(string text) {
             return false;
         }
