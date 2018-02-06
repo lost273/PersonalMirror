@@ -1,5 +1,6 @@
-﻿listenCarefully();
-function listenCarefully(){
+﻿listenerAttach();
+//attach the listener
+function listenerAttach(){
     document.addEventListener("keypress", getChar, false);
     document.addEventListener("keydown", getControlKeys, false);
 }
@@ -22,6 +23,7 @@ function getChar(event) {
     }
     return null; // special char
 }
+//for Backspace only
 function getControlKeys(event) {
     const key = event.key; // const {key} = event; ES6+
     if (key === "Backspace") {
@@ -44,6 +46,7 @@ function userSay() {
             document.getElementById("serveranswer").innerHTML = "";
             slowSay("Someone There said: " + xhr.responseText,0);
             document.getElementById("usermessage").innerHTML = "";
+            //prevent the user entering and hide the cursor
             document.removeEventListener("keypress", getChar, false);
             document.removeEventListener("keydown", getControlKeys, false);
             document.getElementsByClassName("blinking-cursor")[0].innerHTML = "";
@@ -52,13 +55,14 @@ function userSay() {
 
     xhr.send(JSON.stringify(body));
 }
+//character - by - character output from server
 function slowSay(text, index) {
     if (index < text.length) {
         document.getElementById("serveranswer").innerHTML += text[index++];
         setTimeout(function () { slowSay(text, index); }, 100);
     }
     else {
-        listenCarefully();
+        listenerAttach();
         document.getElementsByClassName("blinking-cursor")[0].innerHTML = ">";
     }
 }
