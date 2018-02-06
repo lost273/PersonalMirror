@@ -1,5 +1,5 @@
 ﻿listenerAttach();
-//attach the listener
+//attach the listeners
 function listenerAttach(){
     document.addEventListener("keypress", getChar, false);
     document.addEventListener("keydown", getControlKeys, false);
@@ -28,7 +28,8 @@ function getControlKeys(event) {
     const key = event.key; // const {key} = event; ES6+
     if (key === "Backspace") {
         document.getElementById("usermessage").innerHTML = document.getElementById("usermessage").innerHTML.slice(0, -1);
-        event.preventDefault(); //to prevent the default action (for example - "return back")
+        //to prevent the default action (for example - "return back")
+        event.preventDefault(); 
     }
 }
 function userSay() {

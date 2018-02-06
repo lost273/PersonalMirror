@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+noun for subjects
+pronoun for identify
+verb for action
+imperative mood for command
+====
+ST has environment - table, chair and etc.
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +21,10 @@ namespace PersonalMirror.Controllers {
         [HttpPost]
         public string Index(string message) {
             return "servermessage";
+        }
+        //identify this is conversation or command
+        public bool IsCommand(string text) {
+            return false;
         }
     }
 }
