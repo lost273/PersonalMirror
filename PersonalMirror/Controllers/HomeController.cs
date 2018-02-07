@@ -16,6 +16,7 @@ using PersonalMirror.Models;
 
 namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
+        VocabularyContext db = new VocabularyContext();
         [HttpGet]
         public ActionResult Index() {
             return View();
