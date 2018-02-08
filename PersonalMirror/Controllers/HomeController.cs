@@ -23,13 +23,15 @@ namespace PersonalMirror.Controllers {
         }
         [HttpPost]
         public string Index(string message) {
+            string[] UserWords;
+            UserWords = CutIntoWords(message);
             IdentifyNewWords(message);
             IsCommand(message);
             return "servermessage";
         }
         //is this message contains the new words
         public string[] IdentifyNewWords(string text) {
-            Noun n = new Noun();
+            db.Adjectives.Where();
             
             return new string[5];
         }
