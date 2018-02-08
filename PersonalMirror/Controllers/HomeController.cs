@@ -24,20 +24,37 @@ namespace PersonalMirror.Controllers {
         [HttpPost]
         public string Index(string message) {
             string[] UserWords;
-            UserWords = CutIntoWords(message);
-            IdentifyNewWords(message);
-            IsCommand(message);
+            UserWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            IdentifyNewWords(UserWords);
+            IsCommand(UserWords);
             return "servermessage";
         }
         //is this message contains the new words
-        public string[] IdentifyNewWords(string text) {
-            db.Adjectives.Where();
-            
+        public string[] IdentifyNewWords(string[] text) {
+            foreach (string s in text) {
+                if (db.Nouns.FirstOrDefault(word => word.Name == s) != null) {
+                    Behavior(s, "noun");
+                }
+                if(db.Verbs.FirstOrDefault(word => word.Name == s) != null) {
+                    Behavior(s, "verb");
+                }
+                if (db.Pronouns.FirstOrDefault(word => word.Name == s) != null) {
+                    Behavior(s, "pronoun");
+                }
+                if (db.Adjectives.FirstOrDefault(word => word.Name == s) != null) {
+                    Behavior(s, "adjective");
+                }
+            }
+            //MakeQueryForUser for add new words in the database
             return new string[5];
         }
         //is this conversation or command
         public bool IsCommand(string text) {
             return false;
+        }
+        //AI behavior
+        public void Behavior(string userWord, string particle) {
+
         }
     }
 }
