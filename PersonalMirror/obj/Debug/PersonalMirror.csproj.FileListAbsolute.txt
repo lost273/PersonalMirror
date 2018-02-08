@@ -65,3 +65,7 @@ D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\bin\Microsoft.AI.Web.xml
 D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\obj\Debug\PersonalMirror.csprojResolveAssemblyReference.cache
 D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\obj\Debug\PersonalMirror.dll
 D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\obj\Debug\PersonalMirror.pdb
+D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\bin\EntityFramework.dll
+D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\bin\EntityFramework.SqlServer.dll
+D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\bin\EntityFramework.xml
+D:\prog\VSProj\GIT\PersonalMirror\PersonalMirror\bin\EntityFramework.SqlServer.xml
