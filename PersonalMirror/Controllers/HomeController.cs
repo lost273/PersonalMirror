@@ -35,19 +35,19 @@ namespace PersonalMirror.Controllers {
             bool isImperative = true;
             foreach (string s in text) {
                 if (db.Nouns.FirstOrDefault(word => word.Name == s) != null) {
-                    Behavior(s, "noun");
+                    userSentence.Add("noun", s);
                 }
                 if(db.Verbs.FirstOrDefault(word => word.Name == s) != null) {
                     if (isImperative) {
-                        Behavior(s, "imperative");
+                        userSentence.Add("imperative", s);
                     } else
-                        Behavior(s, "verb");
+                        userSentence.Add("verb", s);
                 }
                 if (db.Pronouns.FirstOrDefault(word => word.Name == s) != null) {
-                    Behavior(s, "pronoun");
+                    userSentence.Add("pronoun", s);
                 }
                 if (db.Adjectives.FirstOrDefault(word => word.Name == s) != null) {
-                    Behavior(s, "adjective");
+                    userSentence.Add("adjective", s);
                 }
                 isImperative = false;
             }
@@ -60,7 +60,7 @@ namespace PersonalMirror.Controllers {
         }
         //AI behavior
         public void Behavior(string userWord, string particle) {
-            userSentence.Add(particle, userWord);
+            
         }
     }
 }
