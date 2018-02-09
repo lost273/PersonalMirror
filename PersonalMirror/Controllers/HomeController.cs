@@ -27,7 +27,6 @@ namespace PersonalMirror.Controllers {
             string[] userWords;
             userWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             IdentifyNewWords(userWords);
-            IsCommand(UserWords);
             return "servermessage";
         }
         //is this message contains the new words
@@ -51,11 +50,18 @@ namespace PersonalMirror.Controllers {
                 }
                 isImperative = false;
             }
+            if (userSentence.ContainsKey("imperative")) {
+                CommandMode();
+            }
             //MakeQueryForUser for add new words in the database
             return new string[5];
         }
         //is this conversation or command
-        public bool IsCommand(string text) {
+        public bool CommandMode() {
+            string action = userSentence["imperative"];
+            if (action.Equals("add")) {
+
+            }
             return false;
         }
         //AI behavior
