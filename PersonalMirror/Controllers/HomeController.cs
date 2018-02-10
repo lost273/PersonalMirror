@@ -25,10 +25,12 @@ namespace PersonalMirror.Controllers {
         [HttpPost]
         public string Index(string message) {
             string[] userWords;
+            string answer = "";
             userWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            CommandMode(userWords);
-            IdentifyNewWords(userWords);
-            return "servermessage";
+            answer = CommandMode(userWords);
+            //IdentifyNewWords(userWords);
+            db.SaveChanges();
+            return answer;
         }
         //is this message contains the new words
         public string[] IdentifyNewWords(string[] text) {
@@ -55,10 +57,15 @@ namespace PersonalMirror.Controllers {
             return new string[5];
         }
         //is this conversation or command
-        public void CommandMode(string[] text) {
+        public string CommandMode(string[] text) {
             if (text[0].Equals("add")) {
-
+                switch (text[1]) {
+                    case "noun":
+                        db.Nouns.Add(new Noun(text[2]));
+                        break;
+                }
             }
+            return "Command completed successfully";
         }
         //AI behavior
         public void Behavior(string userWord, string particle) {
