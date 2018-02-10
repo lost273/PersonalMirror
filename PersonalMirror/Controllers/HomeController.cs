@@ -26,6 +26,7 @@ namespace PersonalMirror.Controllers {
         public string Index(string message) {
             string[] userWords;
             userWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            CommandMode(userWords);
             IdentifyNewWords(userWords);
             return "servermessage";
         }
@@ -50,19 +51,14 @@ namespace PersonalMirror.Controllers {
                 }
                 isImperative = false;
             }
-            if (userSentence.ContainsKey("imperative")) {
-                CommandMode();
-            }
             //MakeQueryForUser for add new words in the database
             return new string[5];
         }
         //is this conversation or command
-        public bool CommandMode() {
-            string action = userSentence["imperative"];
-            if (action.Equals("add")) {
+        public void CommandMode(string[] text) {
+            if (text[0].Equals("add")) {
 
             }
-            return false;
         }
         //AI behavior
         public void Behavior(string userWord, string particle) {
