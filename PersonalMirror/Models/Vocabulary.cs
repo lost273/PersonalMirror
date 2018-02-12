@@ -36,10 +36,12 @@ namespace PersonalMirror.Models {
         public string Name { get; set; }
         public PartOfSpeech Part { get; set; }
         public string Description { get; set; }
+        public List<PartOfSpeech> PartOfSpeeches { get; set; }
     }
     public class PartOfSpeech {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<Word> Words { get; set; }
     }
 }
