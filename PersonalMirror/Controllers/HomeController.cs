@@ -36,21 +36,21 @@ namespace PersonalMirror.Controllers {
         public string[] IdentifyNewWords(string[] text) {
             bool isImperative = true;
             foreach (string s in text) {
-                if (db.Nouns.FirstOrDefault(word => word.Name == s) != null) {
-                    userSentence.Add("noun", s);
-                }
-                if(db.Verbs.FirstOrDefault(word => word.Name == s) != null) {
-                    if (isImperative) {
-                        userSentence.Add("imperative", s);
-                    } else
-                        userSentence.Add("verb", s);
-                }
-                if (db.Pronouns.FirstOrDefault(word => word.Name == s) != null) {
-                    userSentence.Add("pronoun", s);
-                }
-                if (db.Adjectives.FirstOrDefault(word => word.Name == s) != null) {
-                    userSentence.Add("adjective", s);
-                }
+                //if (db.Nouns.FirstOrDefault(word => word.Name == s) != null) {
+                //    userSentence.Add("noun", s);
+                //}
+                //if(db.Verbs.FirstOrDefault(word => word.Name == s) != null) {
+                //    if (isImperative) {
+                //        userSentence.Add("imperative", s);
+                //    } else
+                //        userSentence.Add("verb", s);
+                //}
+                //if (db.Pronouns.FirstOrDefault(word => word.Name == s) != null) {
+                //    userSentence.Add("pronoun", s);
+                //}
+                //if (db.Adjectives.FirstOrDefault(word => word.Name == s) != null) {
+                //    userSentence.Add("adjective", s);
+                //}
                 isImperative = false;
             }
             //MakeQueryForUser for add new words in the database
