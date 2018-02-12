@@ -61,7 +61,7 @@ namespace PersonalMirror.Controllers {
             if (text[0].Equals("add")) {
                 switch (text[1]) {
                     case "noun":
-                        db.Nouns.Add(new Noun(text[2]));
+                        db.Words.Add(new Word(text[2]));
                         break;
                 }
             }

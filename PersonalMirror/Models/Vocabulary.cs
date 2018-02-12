@@ -12,36 +12,16 @@ namespace PersonalMirror.Models {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+    }
+    
+    public class Word : Vocabulary {
+        public Word(string name) : base(name) {
+        }
         public string Description { get; set; }
+        public PartOfSpeech PartOfSpeech { get; set; }
     }
-    public class Noun : Vocabulary {
-        public Noun(string name) : base(name) {
+    public class PartOfSpeech : Vocabulary {
+        public PartOfSpeech(string name) : base(name) {
         }
-    }
-    public class Verb : Vocabulary {
-        public Verb(string name) : base(name) {
-        }
-    }
-    public class Pronoun : Vocabulary {
-        public Pronoun(string name) : base(name) {
-        }
-    }
-    public class Adjective : Vocabulary {
-        public Adjective(string name) : base(name) {
-        }
-    }
-    public class Word {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public PartOfSpeech Part { get; set; }
-        public string Description { get; set; }
-        public List<PartOfSpeech> PartOfSpeeches { get; set; }
-    }
-    public class PartOfSpeech {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<Word> Words { get; set; }
     }
 }
