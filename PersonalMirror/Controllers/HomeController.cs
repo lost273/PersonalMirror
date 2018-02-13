@@ -63,6 +63,9 @@ namespace PersonalMirror.Controllers {
                     case "noun":
                         db.Words.Add(new Word(text[2]));
                         break;
+                    case "part":
+                        db.PartOfSpeeches.Add(new PartOfSpeech(text[2]));
+                        break;
                 }
             }
             return "Command completed successfully";
