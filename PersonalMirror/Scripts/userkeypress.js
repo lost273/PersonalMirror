@@ -60,7 +60,7 @@ function userSay() {
 function slowSay(text, index) {
     if (index < text.length) {
         document.getElementById("serveranswer").innerHTML += text[index++];
-        setTimeout(function () { slowSay(text, index); }, 100);
+        setTimeout(function () { slowSay(text, index); }, 50);
     }
     else {
         listenerAttach();
