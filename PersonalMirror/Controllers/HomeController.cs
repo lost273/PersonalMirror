@@ -108,7 +108,7 @@ namespace PersonalMirror.Controllers {
                     }
                 }
             }
-            return "User not registered";
+            return ModelState.ToString(); 
         }
     }
 }
