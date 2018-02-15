@@ -13,11 +13,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PersonalMirror.Models;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
         VocabularyContext db = new VocabularyContext();
         Dictionary<string, string> userSentence = new Dictionary<string, string>();
+        private ApplicationUserManager UserManager {
+            get {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
         [HttpGet]
         public ActionResult Index() {
             return View();
@@ -82,6 +90,23 @@ namespace PersonalMirror.Controllers {
         //AI behavior
         public void Behavior(string userWord, string particle) {
             
+        }
+
+        [HttpPost]
+        public async Task<string> Register(RegisterModel model) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = new ApplicationUser { UserName = model.UserName };
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded) {
+                    return RedirectToAction("Login", "Account");
+                }
+                else {
+                    foreach (string error in result.Errors) {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+            }
+            return View(model);
         }
     }
 }
