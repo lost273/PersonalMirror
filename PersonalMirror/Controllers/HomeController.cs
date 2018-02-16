@@ -87,7 +87,7 @@ namespace PersonalMirror.Controllers {
             }
             if (text[0].Equals("register")) {
                 RegisterModel model = new RegisterModel { UserName = text[1] , Password = text[2] , PasswordConfirm = text[3] };
-                return Register(model).Result;
+                return Register(model);
             }
             return "Command completed successfully";
         }
@@ -95,20 +95,22 @@ namespace PersonalMirror.Controllers {
         public void Behavior(string userWord, string particle) {
             
         }
-        private async Task<string> Register(RegisterModel model) {
+        private string Register(RegisterModel model) {
+            string errorMessage = "";
             if (ModelState.IsValid) {
                 ApplicationUser user = new ApplicationUser { UserName = model.UserName };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                IdentityResult result = UserManager.Create(user, model.Password);
                 if (result.Succeeded) {
                     return "User registered successfully";
                 }
                 else {
                     foreach (string error in result.Errors) {
+                        errorMessage += error;
                         ModelState.AddModelError("", error);
                     }
                 }
             }
-            return ModelState.ToString(); 
+            return errorMessage; 
         }
     }
 }
