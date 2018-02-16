@@ -96,7 +96,6 @@ namespace PersonalMirror.Controllers {
             
         }
         private string Register(RegisterModel model) {
-            string errorMessage = "";
             if (ModelState.IsValid) {
                 ApplicationUser user = new ApplicationUser { UserName = model.UserName };
                 IdentityResult result = UserManager.Create(user, model.Password);
@@ -105,12 +104,15 @@ namespace PersonalMirror.Controllers {
                 }
                 else {
                     foreach (string error in result.Errors) {
-                        errorMessage += error;
                         ModelState.AddModelError("", error);
                     }
                 }
             }
-            return errorMessage; 
+            return string.Join(",",
+                    ModelState.Values.Where(E => E.Errors.Count > 0)
+                    .SelectMany(E => E.Errors)
+                    .Select(E => E.ErrorMessage)
+                    .ToArray()); ; 
         }
     }
 }
