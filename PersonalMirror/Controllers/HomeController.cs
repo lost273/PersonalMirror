@@ -89,12 +89,16 @@ namespace PersonalMirror.Controllers {
                 RegisterModel model = new RegisterModel { UserName = text[1] , Password = text[2] , PasswordConfirm = text[3] };
                 return Register(model);
             }
+            if (text[0].Equals("login")) {
+
+            }
             return "Command completed successfully";
         }
         //AI behavior
         public void Behavior(string userWord, string particle) {
             
         }
+        //register the new user
         private string Register(RegisterModel model) {
             if (ModelState.IsValid) {
                 ApplicationUser user = new ApplicationUser { UserName = model.UserName };
@@ -108,6 +112,7 @@ namespace PersonalMirror.Controllers {
                     }
                 }
             }
+            //unite all errors in one string
             return string.Join(",",
                     ModelState.Values.Where(E => E.Errors.Count > 0)
                     .SelectMany(E => E.Errors)
