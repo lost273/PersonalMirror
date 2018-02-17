@@ -16,6 +16,8 @@ using PersonalMirror.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace PersonalMirror.Controllers {
     public class HomeController : Controller {
@@ -24,6 +26,11 @@ namespace PersonalMirror.Controllers {
         private ApplicationUserManager UserManager {
             get {
                 return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+        private IAuthenticationManager AuthenticationManager {
+            get {
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
         [HttpGet]
@@ -118,6 +125,33 @@ namespace PersonalMirror.Controllers {
                     .SelectMany(E => E.Errors)
                     .Select(E => E.ErrorMessage)
                     .ToArray()); ; 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginModel model, string returnUrl) {
+            if (ModelState.IsValid) {
+                ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
+                if (user == null) {
+                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                }
+                else {
+                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user,
+                                            DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties {
+                        IsPersistent = true
+                    }, claim);
+                    if (String.IsNullOrEmpty(returnUrl))
+                        return RedirectToAction("Index", "Home");
+                    return Redirect(returnUrl);
+                }
+            }
+            ViewBag.returnUrl = returnUrl;
+            return View(model);
+        }
+        public ActionResult Logout() {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }
