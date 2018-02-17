@@ -97,7 +97,8 @@ namespace PersonalMirror.Controllers {
                 return Register(model);
             }
             if (text[0].Equals("login")) {
-
+                LoginModel model = new LoginModel { UserName = text[1], Password = text[2] };
+                return Login(model);
             }
             return "Command completed successfully";
         }
@@ -124,34 +125,35 @@ namespace PersonalMirror.Controllers {
                     ModelState.Values.Where(E => E.Errors.Count > 0)
                     .SelectMany(E => E.Errors)
                     .Select(E => E.ErrorMessage)
-                    .ToArray()); ; 
+                    .ToArray()); 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model, string returnUrl) {
+        public string Login(LoginModel model) {
             if (ModelState.IsValid) {
-                ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
+                ApplicationUser user = UserManager.Find(model.UserName, model.Password);
                 if (user == null) {
                     ModelState.AddModelError("", "Неверный логин или пароль.");
                 }
                 else {
-                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user,
+                    ClaimsIdentity claim = UserManager.CreateIdentity(user,
                                             DefaultAuthenticationTypes.ApplicationCookie);
                     AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties {
                         IsPersistent = true
                     }, claim);
-                    if (String.IsNullOrEmpty(returnUrl))
-                        return RedirectToAction("Index", "Home");
-                    return Redirect(returnUrl);
+                    return "welcome";
                 }
             }
-            ViewBag.returnUrl = returnUrl;
-            return View(model);
+            return string.Join(",",
+                    ModelState.Values.Where(E => E.Errors.Count > 0)
+                    .SelectMany(E => E.Errors)
+                    .Select(E => E.ErrorMessage)
+                    .ToArray());
         }
-        public ActionResult Logout() {
+        public string Logout() {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            return "bye";
         }
     }
 }

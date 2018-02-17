@@ -7,7 +7,7 @@ using System.Web;
 namespace PersonalMirror.Models {
     public class LoginModel {
         [Required]
-        public string Email { get; set; }
+        public string UserName { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
