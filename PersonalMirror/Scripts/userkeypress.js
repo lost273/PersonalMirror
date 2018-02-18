@@ -7,10 +7,6 @@ function listenerAttach(){
 function getChar(event) {
     if (event.which == null) { // IE
         if (event.keyCode === 13) { //enter
-            //prevent the user entering and hide the cursor
-            document.removeEventListener("keypress", getChar, false);
-            document.removeEventListener("keydown", getControlKeys, false);
-            document.getElementsByClassName("blinking-cursor")[0].innerHTML = "waiting...";
             userSay();
             return null;
         }
@@ -46,15 +42,12 @@ function userSay() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("userhistory").innerHTML = " Stranger said: " +
-                document.getElementById("usermessage").innerHTML;
             document.getElementById("serveranswer").innerHTML = "";
             slowSay("Someone There said: " + xhr.responseText,0);
-            document.getElementById("usermessage").innerHTML = "";
         }
     };
-
     xhr.send(JSON.stringify(body));
+    enterPressed();
 }
 //character - by - character output from server
 function slowSay(text, index) {
@@ -66,4 +59,13 @@ function slowSay(text, index) {
         listenerAttach();
         document.getElementsByClassName("blinking-cursor")[0].innerHTML = ">";
     }
+}
+//prevent the user entering and hide the cursor
+function enterPressed() {
+    document.removeEventListener("keypress", getChar, false);
+    document.removeEventListener("keydown", getControlKeys, false);
+    document.getElementsByClassName("blinking-cursor")[0].innerHTML = "waiting...";
+    document.getElementById("userhistory").innerHTML = " Stranger said: " +
+        document.getElementById("usermessage").innerHTML;
+    document.getElementById("usermessage").innerHTML = "";
 }
