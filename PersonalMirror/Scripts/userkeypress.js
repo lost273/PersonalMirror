@@ -7,6 +7,10 @@ function listenerAttach(){
 function getChar(event) {
     if (event.which == null) { // IE
         if (event.keyCode === 13) { //enter
+            //prevent the user entering and hide the cursor
+            document.removeEventListener("keypress", getChar, false);
+            document.removeEventListener("keydown", getControlKeys, false);
+            document.getElementsByClassName("blinking-cursor")[0].innerHTML = "waiting...";
             userSay();
             return null;
         }
@@ -47,10 +51,6 @@ function userSay() {
             document.getElementById("serveranswer").innerHTML = "";
             slowSay("Someone There said: " + xhr.responseText,0);
             document.getElementById("usermessage").innerHTML = "";
-            //prevent the user entering and hide the cursor
-            document.removeEventListener("keypress", getChar, false);
-            document.removeEventListener("keydown", getControlKeys, false);
-            document.getElementsByClassName("blinking-cursor")[0].innerHTML = "";
         }
     };
 
