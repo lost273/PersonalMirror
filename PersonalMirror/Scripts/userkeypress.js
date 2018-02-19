@@ -65,7 +65,5 @@ function enterPressed() {
     document.removeEventListener("keypress", getChar, false);
     document.removeEventListener("keydown", getControlKeys, false);
     document.getElementsByClassName("blinking-cursor")[0].innerHTML = "waiting...";
-    document.getElementById("userhistory").innerHTML = " Stranger said: " +
-        document.getElementById("usermessage").innerHTML;
     document.getElementById("usermessage").innerHTML = "";
 }
