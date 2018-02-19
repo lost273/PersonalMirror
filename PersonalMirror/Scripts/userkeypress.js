@@ -42,7 +42,7 @@ function userSay() {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("serveranswer").innerHTML = "";
+            document.getElementsByClassName("blinking-cursor")[0].innerHTML = "";
             slowSay("Someone There said: " + xhr.responseText,0);
         }
     };
@@ -66,4 +66,5 @@ function enterPressed() {
     document.removeEventListener("keydown", getControlKeys, false);
     document.getElementsByClassName("blinking-cursor")[0].innerHTML = "waiting...";
     document.getElementById("usermessage").innerHTML = "";
+    document.getElementById("serveranswer").innerHTML = "";
 }
