@@ -100,6 +100,10 @@ namespace PersonalMirror.Controllers {
                 LoginModel model = new LoginModel { UserName = text[1], Password = text[2] };
                 return Login(model);
             }
+            if (text[0].Equals("logout")) {
+                AuthenticationManager.SignOut();
+                return "bye";
+            }
             return "Command completed successfully";
         }
         //AI behavior
@@ -150,10 +154,6 @@ namespace PersonalMirror.Controllers {
                     .SelectMany(E => E.Errors)
                     .Select(E => E.ErrorMessage)
                     .ToArray());
-        }
-        public string Logout() {
-            AuthenticationManager.SignOut();
-            return "bye";
         }
     }
 }
