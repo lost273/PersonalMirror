@@ -96,6 +96,15 @@ namespace PersonalMirror.Controllers {
                 RegisterModel model = new RegisterModel { UserName = text[1] , Password = text[2] , PasswordConfirm = text[3] };
                 return Register(model);
             }
+            if (text[0].Equals("delete")) {
+                ApplicationUser user = UserManager.FindByName(User.Identity.Name);
+                if (user != null) {
+                    IdentityResult result = UserManager.Delete(user);
+                    if (result.Succeeded) {
+                        return "delete successfully";
+                    }
+                }
+            }
             if (text[0].Equals("login")) {
                 LoginModel model = new LoginModel { UserName = text[1], Password = text[2] };
                 return Login(model);
@@ -146,7 +155,7 @@ namespace PersonalMirror.Controllers {
                     AuthenticationManager.SignIn(new AuthenticationProperties {
                         IsPersistent = true
                     }, claim);
-                    return "welcome";
+                    return "welcome" + User.Identity.Name;
                 }
             }
             return string.Join(",",
