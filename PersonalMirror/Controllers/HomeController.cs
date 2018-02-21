@@ -33,6 +33,11 @@ namespace PersonalMirror.Controllers {
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+        private ApplicationRoleManager RoleManager {
+            get {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+        }
         [HttpGet]
         public ActionResult Index() {
             return View();
@@ -42,6 +47,11 @@ namespace PersonalMirror.Controllers {
             string[] userWords;
             string answer = "";
             userWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if ((UserManager.FindByName(User.Identity.Name) == null) && 
+                (userWords[0].Equals("login") == false) &&
+                (userWords[0].Equals("register") == false)) {
+                return "Sorry, Stranger, login or register, please.";
+            }
             answer = CommandMode(userWords);
             //IdentifyNewWords(userWords);
             db.SaveChanges();
