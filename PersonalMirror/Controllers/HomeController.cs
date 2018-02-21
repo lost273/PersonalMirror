@@ -102,6 +102,10 @@ namespace PersonalMirror.Controllers {
                         break;
                 }
             }
+            if (text[0].Equals("create") && text[1].Equals("role")) {
+                CreateRoleModel model = new CreateRoleModel { Name = text[1], Description = text[2] };
+                return CreateRole(model);
+            }
             if (text[0].Equals("register")) {
                 RegisterModel model = new RegisterModel { UserName = text[1] , Password = text[2] , PasswordConfirm = text[3] };
                 return Register(model);
@@ -128,6 +132,10 @@ namespace PersonalMirror.Controllers {
         //AI behavior
         public void Behavior(string userWord, string particle) {
             
+        }
+        //create the new role
+        private string CreateRole(CreateRoleModel model) {
+            return "";
         }
         //register the new user
         private string Register(RegisterModel model) {
