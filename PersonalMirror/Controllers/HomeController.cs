@@ -107,12 +107,11 @@ namespace PersonalMirror.Controllers {
                 return CreateRole(model);
             }
             if (text[0].Equals("edit") && text[1].Equals("role")) {
-                CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
-                return CreateRole(model);
+                EditRoleModel model = new EditRoleModel { Name = text[2], Description = text[3] };
+                return EditRole(model);
             }
             if (text[0].Equals("delete") && text[1].Equals("role")) {
-                CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
-                return CreateRole(model);
+                return DeleteRole(text[2]);
             }
             if (text[0].Equals("register")) {
                 RegisterModel model = new RegisterModel { UserName = text[1] , Password = text[2] , PasswordConfirm = text[3] };
@@ -157,33 +156,30 @@ namespace PersonalMirror.Controllers {
                     }
                 }
             }
-            //edit the role
-            public async Task<ActionResult> EditRole(EditRoleModel model)
-            {
-                if (ModelState.IsValid) {
-                    ApplicationRole role = await RoleManager.FindByIdAsync(model.Id);
-                    if (role != null) {
-                        role.Description = model.Description;
-                        role.Name = model.Name;
-                        IdentityResult result = await RoleManager.UpdateAsync(role);
-                        if (result.Succeeded) {
-                            return RedirectToAction("Index");
-                        }
-                        else {
-                            ModelState.AddModelError("", "Что-то пошло не так");
+            //unite all errors in one string
+            return string.Join(",",
+                    ModelState.Values.Where(E => E.Errors.Count > 0)
+                    .SelectMany(E => E.Errors)
+                    .Select(E => E.ErrorMessage)
+                    .ToArray());
+        }
+        //edit the role
+        public string EditRole(EditRoleModel model) {
+            if (ModelState.IsValid) {
+                ApplicationRole role = RoleManager.FindById(model.Id);
+                if (role != null) {
+                    role.Description = model.Description;
+                    role.Name = model.Name;
+                    IdentityResult result = RoleManager.Update(role);
+                    if (result.Succeeded) {
+                        return "User role edited successfully";
+                    }
+                    else {
+                        foreach (string error in result.Errors) {
+                            ModelState.AddModelError("", error);
                         }
                     }
                 }
-                return View(model);
-            }
-            //delete the role
-            public async Task<ActionResult> DeleteRole(string id)
-            {
-                ApplicationRole role = await RoleManager.FindByIdAsync(id);
-                if (role != null) {
-                    IdentityResult result = await RoleManager.DeleteAsync(role);
-                }
-                return RedirectToAction("Index");
             }
             //unite all errors in one string
             return string.Join(",",
@@ -191,6 +187,14 @@ namespace PersonalMirror.Controllers {
                     .SelectMany(E => E.Errors)
                     .Select(E => E.ErrorMessage)
                     .ToArray());
+        }
+        //delete the role
+        public string DeleteRole(string id) {
+            ApplicationRole role = RoleManager.FindById(id);
+            if (role != null) {
+                IdentityResult result = RoleManager.Delete(role);
+            }
+            return "User role deleted successfully";
         }
         //register the new user
         private string Register(RegisterModel model) {
