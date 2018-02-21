@@ -103,7 +103,15 @@ namespace PersonalMirror.Controllers {
                 }
             }
             if (text[0].Equals("create") && text[1].Equals("role")) {
-                CreateRoleModel model = new CreateRoleModel { Name = text[1], Description = text[2] };
+                CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
+                return CreateRole(model);
+            }
+            if (text[0].Equals("edit") && text[1].Equals("role")) {
+                CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
+                return CreateRole(model);
+            }
+            if (text[0].Equals("delete") && text[1].Equals("role")) {
+                CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
                 return CreateRole(model);
             }
             if (text[0].Equals("register")) {
@@ -135,7 +143,54 @@ namespace PersonalMirror.Controllers {
         }
         //create the new role
         private string CreateRole(CreateRoleModel model) {
-            return "";
+            if (ModelState.IsValid) {
+                IdentityResult result = RoleManager.Create(new ApplicationRole {
+                    Name = model.Name,
+                    Description = model.Description
+                });
+                if (result.Succeeded) {
+                    return "User role created successfully";
+                }
+                else {
+                    foreach (string error in result.Errors) {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+            }
+            //edit the role
+            public async Task<ActionResult> EditRole(EditRoleModel model)
+            {
+                if (ModelState.IsValid) {
+                    ApplicationRole role = await RoleManager.FindByIdAsync(model.Id);
+                    if (role != null) {
+                        role.Description = model.Description;
+                        role.Name = model.Name;
+                        IdentityResult result = await RoleManager.UpdateAsync(role);
+                        if (result.Succeeded) {
+                            return RedirectToAction("Index");
+                        }
+                        else {
+                            ModelState.AddModelError("", "Что-то пошло не так");
+                        }
+                    }
+                }
+                return View(model);
+            }
+            //delete the role
+            public async Task<ActionResult> DeleteRole(string id)
+            {
+                ApplicationRole role = await RoleManager.FindByIdAsync(id);
+                if (role != null) {
+                    IdentityResult result = await RoleManager.DeleteAsync(role);
+                }
+                return RedirectToAction("Index");
+            }
+            //unite all errors in one string
+            return string.Join(",",
+                    ModelState.Values.Where(E => E.Errors.Count > 0)
+                    .SelectMany(E => E.Errors)
+                    .Select(E => E.ErrorMessage)
+                    .ToArray());
         }
         //register the new user
         private string Register(RegisterModel model) {
