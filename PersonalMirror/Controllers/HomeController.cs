@@ -52,10 +52,14 @@ namespace PersonalMirror.Controllers {
                 (userWords[0].Equals("register") == false)) {
                 return "Sorry, Stranger, login or register, please.";
             }
+            AdminIdentify();
             answer = CommandMode(userWords);
             //IdentifyNewWords(userWords);
             db.SaveChanges();
             return answer;
+        }
+        private void AdminIdentify() {
+
         }
         //is this message contains the new words
         private string[] IdentifyNewWords(string[] text) {
