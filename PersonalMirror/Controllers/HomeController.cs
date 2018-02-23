@@ -58,7 +58,7 @@ namespace PersonalMirror.Controllers {
             return answer;
         }
         //is this message contains the new words
-        public string[] IdentifyNewWords(string[] text) {
+        private string[] IdentifyNewWords(string[] text) {
             bool isImperative = true;
             foreach (string s in text) {
                 //if (db.Nouns.FirstOrDefault(word => word.Name == s) != null) {
@@ -82,7 +82,7 @@ namespace PersonalMirror.Controllers {
             return new string[5];
         }
         //is this conversation or command
-        public string CommandMode(string[] text) {
+        private string CommandMode(string[] text) {
             if (text[0].Equals("add")) {
                 switch (text[1]) {
                     case "noun":
@@ -137,7 +137,7 @@ namespace PersonalMirror.Controllers {
             return "Command completed successfully";
         }
         //AI behavior
-        public void Behavior(string userWord, string particle) {
+        private void Behavior(string userWord, string particle) {
             
         }
         //create the new role
@@ -164,7 +164,7 @@ namespace PersonalMirror.Controllers {
                     .ToArray());
         }
         //edit the role
-        public string EditRole(EditRoleModel model) {
+        private string EditRole(EditRoleModel model) {
             if (ModelState.IsValid) {
                 ApplicationRole role = RoleManager.FindById(model.Id);
                 if (role != null) {
@@ -189,7 +189,7 @@ namespace PersonalMirror.Controllers {
                     .ToArray());
         }
         //delete the role
-        public string DeleteRole(string id) {
+        private string DeleteRole(string id) {
             ApplicationRole role = RoleManager.FindById(id);
             if (role != null) {
                 IdentityResult result = RoleManager.Delete(role);
@@ -219,7 +219,7 @@ namespace PersonalMirror.Controllers {
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public string Login(LoginModel model) {
+        private string Login(LoginModel model) {
             if (ModelState.IsValid) {
                 ApplicationUser user = UserManager.Find(model.UserName, model.Password);
                 if (user == null) {
