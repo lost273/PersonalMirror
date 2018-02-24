@@ -37,19 +37,21 @@ namespace PersonalMirror.Controllers {
         public string Index(string message) {
             string[] userWords;
             string answer = "";
+            bool IsAdmin;
             userWords = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             if ((UserManager.FindByName(User.Identity.Name) == null) && 
                 (userWords[0].Equals("login") == false) &&
                 (userWords[0].Equals("register") == false)) {
                 return "Sorry, Stranger, login or register, please.";
             }
-            AdminIdentify();
-            answer = CommandMode(userWords);
+            FirstRun();
+            IsAdmin = User.Identity.Name.Equals("Administrator");
+            answer = CommandMode(userWords, IsAdmin);
             //IdentifyNewWords(userWords);
             db.SaveChanges();
             return answer;
         }
-        private void AdminIdentify() {
+        private void FirstRun() {
             if (UserManager.FindByName("Administrator") == null) {
                 RegisterModel model = new RegisterModel { UserName = "Administrator", Password = "111111", PasswordConfirm = "111111" };
                 Register(model);
@@ -83,7 +85,7 @@ namespace PersonalMirror.Controllers {
             return new string[5];
         }
         //is this conversation or command
-        private string CommandMode(string[] text) {
+        private string CommandMode(string[] text, bool IsAdmin) {
             if (text[0].Equals("add")) {
                 switch (text[1]) {
                     case "noun":
@@ -103,15 +105,15 @@ namespace PersonalMirror.Controllers {
                         break;
                 }
             }
-            if (text[0].Equals("create") && text[1].Equals("role")) {
+            if (text[0].Equals("create") && text[1].Equals("role") && IsAdmin) {
                 CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
                 return CreateRole(model);
             }
-            if (text[0].Equals("edit") && text[1].Equals("role")) {
+            if (text[0].Equals("edit") && text[1].Equals("role") && IsAdmin) {
                 EditRoleModel model = new EditRoleModel { Name = text[2], Description = text[3] };
                 return EditRole(model);
             }
-            if (text[0].Equals("delete") && text[1].Equals("role")) {
+            if (text[0].Equals("delete") && text[1].Equals("role") && IsAdmin) {
                 return DeleteRole(text[2]);
             }
             if (text[0].Equals("register")) {
