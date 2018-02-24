@@ -51,7 +51,11 @@ namespace PersonalMirror.Controllers {
         }
         private void AdminIdentify() {
             if (UserManager.FindByName("Administrator") == null) {
-
+                RegisterModel model = new RegisterModel { UserName = "Administrator", Password = "111111", PasswordConfirm = "111111" };
+                Register(model);
+                CreateRoleModel roleModel = new CreateRoleModel { Name = "admin", Description = "admin" };
+                CreateRole(roleModel);
+                UserManager.AddToRole(UserManager.FindByName("Administrator").Id, "admin");
             }
         }
         //is this message contains the new words
