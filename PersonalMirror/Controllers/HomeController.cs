@@ -1,13 +1,4 @@
-﻿/*
-noun for subjects
-pronoun for identify
-verb for action
-imperative mood for command
-adjective for description
-====
-ST has environment - table, chair and etc.
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -59,7 +50,9 @@ namespace PersonalMirror.Controllers {
             return answer;
         }
         private void AdminIdentify() {
+            if (UserManager.FindByName("Administrator") == null) {
 
+            }
         }
         //is this message contains the new words
         private string[] IdentifyNewWords(string[] text) {
