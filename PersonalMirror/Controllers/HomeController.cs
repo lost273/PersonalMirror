@@ -149,8 +149,9 @@ namespace PersonalMirror.Controllers {
         private string ListOfUsers() {
             string listOfUser = "";
             foreach (ApplicationUser user in UserManager.Users) {
-                user.UserName
+                listOfUser += user.UserName + ",";
             }
+            return listOfUser;
         }
         //create the new role
         private string CreateRole(CreateRoleModel model) {
