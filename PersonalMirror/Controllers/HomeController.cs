@@ -105,6 +105,9 @@ namespace PersonalMirror.Controllers {
                         break;
                 }
             }
+            if (text[0].Equals("list") && text[1].Equals("users") && IsAdmin) {
+                return ListOfUsers();
+            }
             if (text[0].Equals("create") && text[1].Equals("role") && IsAdmin) {
                 CreateRoleModel model = new CreateRoleModel { Name = text[2], Description = text[3] };
                 return CreateRole(model);
@@ -142,6 +145,12 @@ namespace PersonalMirror.Controllers {
         //AI behavior
         private void Behavior(string userWord, string particle) {
             
+        }
+        private string ListOfUsers() {
+            string listOfUser = "";
+            foreach (ApplicationUser user in UserManager.Users) {
+                user.UserName
+            }
         }
         //create the new role
         private string CreateRole(CreateRoleModel model) {
