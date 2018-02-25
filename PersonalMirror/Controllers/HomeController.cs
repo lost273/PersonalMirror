@@ -86,6 +86,9 @@ namespace PersonalMirror.Controllers {
         }
         //is this conversation or command
         private string CommandMode(string[] text, bool IsAdmin) {
+            if (text[0].Equals("hello")) {
+                return "Hello," + User.Identity.Name;
+            }
             if (text[0].Equals("add")) {
                 switch (text[1]) {
                     case "noun":
@@ -245,7 +248,7 @@ namespace PersonalMirror.Controllers {
                     AuthenticationManager.SignIn(new AuthenticationProperties {
                         IsPersistent = true
                     }, claim);
-                    return "welcome" + User.Identity.Name;
+                    return "welcome " + model.UserName;
                 }
             }
             return string.Join(",",
